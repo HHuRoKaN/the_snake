@@ -71,7 +71,7 @@ QUIT = pg.QUIT
 clock = pg.time.Clock()
 
 # Счетчик игр в игровой сессии
-Game = 0
+game = 0
 
 
 # Тут опишите все классы игры.
@@ -249,10 +249,10 @@ def main():
 
 def records(len, max_len):
     """Запись рекордов за игровую сессию."""
-    global Game
-    Game += 1
+    global game
+    game += 1
     with open("records.txt", 'a', encoding='utf-8') as file:
-        file.write(f'Игра № {Game}. Результат: {len}.'
+        file.write(f'Игра № {game}. Результат: {len}.'
                    f' Максимальная длина была: {max_len}\n')
 
 
