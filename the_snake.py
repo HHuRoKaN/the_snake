@@ -148,11 +148,13 @@ class Snake(GameObject):
         self.next_direction = None
         self.body_color = SNAKE_COLOR
         self.last = None
+        self.can_change_direction = True
 
     def update_direction(self, next_direction=None):
         """Обновление направления движения змейки."""
-        if next_direction:
+        if next_direction and self.can_change_direction:
             self.direction = next_direction
+            self.can_change_direction = False
             self.next_direction = None
 
     def move(self):
@@ -166,6 +168,7 @@ class Snake(GameObject):
         self.positions.insert(0, head_position)
         if len(self.positions) > self.lenght:
             self.last = self.positions.pop()
+        self.can_change_direction = True
 
     def draw(self):
         """Отрисовка змейки."""
