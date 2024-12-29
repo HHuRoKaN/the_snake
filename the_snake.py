@@ -98,8 +98,6 @@ class Apple(GameObject):
     def __init__(self):
         super().__init__()
         self.body_color = APPLE_COLOR
-        # сюда не передается occupied_positions, поэтому просто оставил пустой
-        # список
         self.randomize_position([])
 
     def randomize_position(self, occupied_positions):
@@ -198,9 +196,7 @@ class Snake(GameObject):
 
 def main():
     """Основная логика игры."""
-    # Инициализация PyGame:
     pg.init()
-    # Тут нужно создать экземпляры классов.
     apple = Apple()
     snake = Snake()
     poison = Poison()
@@ -212,10 +208,8 @@ def main():
         snake.draw()
         apple.draw()
         poison.draw()
-        # Тут опишите основную логику игры.
         snake.update_direction(snake.next_direction)
         snake.move()
-        # Добавление всех занятых позиций
         occupied_positions = set(snake.positions)
         occupied_positions.add(apple.position)
         occupied_positions.add(poison.position)
